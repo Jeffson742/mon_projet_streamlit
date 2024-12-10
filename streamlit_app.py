@@ -57,6 +57,19 @@ try:
 except FileNotFoundError:
     st.write("Aucune déclaration enregistrée pour le moment.")
 
+# Section : Totaux des déclarations et des conteneurs
+st.header("Statistiques globales")
+try:
+    if not df.empty:
+        total_declarations = len(df)  # Total des déclarations
+        total_conteneurs = df['Conteneurs'].sum()  # Total des conteneurs
+
+        # Afficher les statistiques
+        st.write(f"### Total des déclarations : {total_declarations}")
+        st.write(f"### Total des conteneurs : {total_conteneurs}")
+except FileNotFoundError:
+    st.warning("Aucune donnée enregistrée pour le moment.")
+
 # Section : Générer des fichiers CSV par importateur
 st.header("Générer des fichiers CSV par importateur")
 try:
